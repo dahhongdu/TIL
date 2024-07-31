@@ -4,18 +4,9 @@ import styled from "styled-components";
 import { FaInstagram, FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
 import { MdOutlineEmail } from "react-icons/md";
-import { BsFillRssFill } from "react-icons/bs";
 
 const EmojiLink = styled.span`
   cursor: pointer;
-  color: ${props => props.theme.emoji};
-`;
-
-const RssLink = styled(EmojiLink)`
-  color: ${props => props.theme.emoji};
-`;
-
-const StyledRssIcon = styled(BsFillRssFill)`
   color: ${props => props.theme.emoji};
 `;
 
@@ -38,11 +29,6 @@ const StyledSocialLinks = styled.div`
 const SocialLinks = ({ socialLinks }) => {
   return (
     <StyledSocialLinks>
-      <RssLink>
-        <Link to="/rss.xml">
-          <StyledRssIcon className="icon" size="26" />
-        </Link>
-      </RssLink>
       {Object.entries(socialLinks).map(([key, link]) => (
         key === 'email' ? (
           <a key={key} href={`mailto:${link}`}>

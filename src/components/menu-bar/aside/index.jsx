@@ -3,18 +3,19 @@ import styled from "styled-components";
 import { useLocation } from "@reach/router";
 import { Link } from "gatsby";
 import { siteMetadata } from "../../../../gatsby-config";
-import { IoBookmarks } from "react-icons/io5";
+import { IoSearch, IoHome } from "react-icons/io5";
 import { FaBook } from "react-icons/fa";
 import { BsFillPeopleFill } from "react-icons/bs";
-import { IoHome, IoSearch } from "react-icons/io5";
+import { GiPartyPopper } from "react-icons/gi";
+import { FaTags  } from "react-icons/fa";
 import ThemeSwitch from "../../theme-switch";
 
 const menuItems = [
-  { to: '/', icon: <IoHome className="icon" size="30" />, text: 'Home' },
-  { to: '/search', icon: <IoSearch className="icon" size="30" />, text: 'Search' },
-  { to: '/tags', icon: <IoBookmarks className="icon" size="30" />, text: 'Tags' },
-  { to: '/series', icon: <FaBook className="icon" size="30" />, text: 'Series' },
-  { to: '/about', icon: <BsFillPeopleFill className="icon" size="30" />, text: 'About' },
+  { to: '/search', icon: <IoSearch className="icon" size="23" />, text: '', showText: false },
+  { to: '/tags', icon: <FaTags className="icon" size="23" />, text: 'Tags', showText: true },
+  { to: '/series', icon: <FaBook className="icon" size="23" />, text: 'Series', showText: true },
+  { to: '/about', icon: <BsFillPeopleFill className="icon" size="23" />, text: 'About', showText: true },
+  { to: '/community', icon: <GiPartyPopper className="icon" size="23" />, text: '방명록', showText: true },
 ];
 
 const AsideMenuBar = () => {
@@ -34,12 +35,6 @@ const AsideMenuBar = () => {
           <MenuItem key={index} {...item} active={location.pathname === item.to} />
         ))}
       </div>
-      <Link to={"/community"} style={{ textDecoration: 'none' }}>
-        <SocialMenu>
-          <SocialImage />
-          <SocialText>{siteMetadata.author} / Social</SocialText>
-        </SocialMenu>
-      </Link>
     </SideMenuBarStyle>
   );
 };
@@ -105,29 +100,6 @@ const Title = styled.div`
   margin-bottom: 40px;
   font-family: "Source Code Pro", sans-serif;
   font-weight: 800;
-`;
-
-const SocialMenu = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  padding-top: 10px;
-  padding-right: 40px;
-  padding-bottom: 10px;
-  transition: background-color 0.2s ease-in-out;
-  border-radius: 8px;
-
-  &:hover {
-    background-color: ${(props) => (props.active ? props.theme.menuBar.sideMenu : props.theme.menuBar.sideMenuHover)};
-  }
-`;
-
-const SocialText = styled.p`
-  font-size: 15px;
-  color: ${props => props.theme.main.text};
-  margin-left: 7px;
-  margin-top: 10px;
-  line-height: 125%;
 `;
 
 const profileImageUrl =

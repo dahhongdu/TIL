@@ -3,7 +3,7 @@ module.exports = {
     description: `Becoming the best version of myself`,
     author: `다홍`,
     siteUrl: `https://wonduisluv.netlify.app`,
-    keywords: [`frontend`, `backend`, `react`, `spring`, `web`], 
+    keywords: [`react`, `javascript`, `typescript`], 
     // repo: 'dahhongdu/gatsby-blog', // utterances
     gtag: 'G-CD9E7GB2ED', // with. Google Analytics
     socialLinks: { 

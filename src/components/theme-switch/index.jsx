@@ -57,6 +57,7 @@ const DarkModeButton = styled.div`
     transition: background-color 0.2s ease-in-out;
     border-radius: 8px;
     background-color: ${(props) => (props.active ? props.theme.menuBar.sideMenu : "transparent")};
+    cursor: pointer;
 
     &:hover {
         background-color: ${(props) => (props.active ? props.theme.menuBar.sideMenu : props.theme.menuBar.sideMenuHover)};

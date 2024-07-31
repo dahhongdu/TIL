@@ -79,8 +79,9 @@ const profileImageUrl =
     ? "http://localhost:8000"
     : siteMetadata.siteUrl;
 
+
 const Image = styled.div`
-  background-image: url(${siteMetadata.siteUrl}/profile.png);
+  background-image: url("https://avatars.githubusercontent.com/dahhongdu");
   width: 140px;
   height: 140px;
   border: 1px solid transparent;
