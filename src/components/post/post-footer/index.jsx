@@ -29,7 +29,6 @@ const FooterWrapper = styled.div`
 
 const More = styled.div`
   font-size: 35px;
-  border-top: 1px solid #484848;
   padding-top: 70px;
   color: ${props => props.theme.post.content.text};
   font-style: italic;

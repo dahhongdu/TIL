@@ -42,12 +42,12 @@ const MenuItem = ({ to, icon, text, showText }) => {
 };
 
 const Title = styled.header`
-  font-size: 24px;
+  font-size: 1.5rem;
   color: ${props => props.theme.main.text};
   font-weight: bold;
   margin-left: 1rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `;
 
 const NavigatorWrapper = styled.div`
@@ -65,13 +65,9 @@ const NavigatorWrapper = styled.div`
   }
 `;
 
-
-
-
 const MenuContainer = styled.div`
   display: flex;
   margin-right: 1rem;
-  max-width: 42%;
   align-items: center;
 `;
 

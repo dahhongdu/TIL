@@ -1,13 +1,11 @@
 ---
-title: 다홍입니다
-description: 왜 안 뜨는거냐!
+title: About myself
+description: Becoming the best version of myself!
 date: "2024-07-31"
 tags:
   - about
-series:
-  - about
-previewImage: default.png
-isPrivate: false
+series: about
+isPrivate: true
 ---
 
-안녕하세요? 
+반갑습니다.

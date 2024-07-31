@@ -41,12 +41,12 @@ const PageLayout = ({ children }) => {
 
 const PageWrapper = styled.div`
   @media(max-width: 768px) {
-    padding: 0 10px;
+    padding: 0 1rem;
   }
 
   height: auto;
   min-height: 100%;
-  margin-bottom: 70px;
+  margin-bottom: 1rem;
 `;
 
 export default PageLayout;

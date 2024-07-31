@@ -11,11 +11,6 @@ const SeriesList = ({ seriesList, totalCount }) => {
       <CenteredSeriesListContainer>
         <SeriesListContainer>
           {seriesList.map((series) => {
-            const oldestDate = series.nodes.reduce((minDate, node) => {
-              const postDate = new Date(node.frontmatter.date);
-              return postDate < minDate ? postDate : minDate;
-            }, new Date());
-
             const mostRecentDate = series.nodes.reduce((maxDate, node) => {
               const postDate = new Date(node.frontmatter.date);
               return postDate > maxDate ? postDate : maxDate;
@@ -26,7 +21,6 @@ const SeriesList = ({ seriesList, totalCount }) => {
                 <SeriesStyle>
                   <TitleSection>{series.fieldValue}</TitleSection>
                   <DescriptionSection>
-                    <SeriesDate>Created at . {oldestDate.toDateString()}</SeriesDate>
                     <SeriesDate>Last updated on . {mostRecentDate.toDateString()}</SeriesDate> 
                     <PostCount>{series.totalCount} post{series.totalCount !== 1 ? 's' : ''} found.</PostCount>
                   </DescriptionSection>
@@ -70,13 +64,13 @@ const SeriesListContainer = styled.div`
 `;
 
 const SeriesDate = styled.div`
-  margin: 3px 8px;
+  margin: 1rem 1rem;
   font-size: 12px;
   color: ${props => props.theme.serieslist.date}; 
 `;
 
 const PostCount = styled.div`
-  margin: 12px 8px;
+  margin: 1rem 1rem;
   font-size: 12px;
   color: #adb5be; 
 `;

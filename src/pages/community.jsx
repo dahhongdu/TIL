@@ -4,13 +4,6 @@ import PageLayout from "../components/layout/page-component";
 import Profile from "../components/profile";
 import Utterances from "../components/utterances/index.jsx";
 import styled from "styled-components";
-import { Link } from "gatsby";
-import { FaInstagram } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { SiVelog } from "react-icons/si";
-import { FaGithub } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
 import Seo from "../components/seo/index.jsx";
 import { siteMetadata } from "../../gatsby-config.js";
 
@@ -27,7 +20,7 @@ const CommunityTemplate = ({ data }) => {
     <PageLayout>
       <Seo title={title} description={description}/>
       <Profile author={author} description={description} siteUrl={siteUrl} keywords={keywords} socialLinks={socialLinks}/>
-      <Description>Leave a comment to connect with this author 👋</Description>
+      <Description>방명록을 남겨주세요! 👋</Description>
       <Line/>
       <Utterances/>
     </PageLayout>

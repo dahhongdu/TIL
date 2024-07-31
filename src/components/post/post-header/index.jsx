@@ -56,8 +56,8 @@ const PostHeader = ({ title, date, author, tags, series }) => {
       <PostTitle>{title}</PostTitle>
       <Info>
         <Description>
-          Posted by{' '}
-          <PostAuthor>@{author}</PostAuthor>, {'   '}
+          {/* Posted by{' '}
+          <PostAuthor>{author}</PostAuthor>, {'   '} */}
           {date}
         </Description>
         <ShareLinkContainer>
@@ -116,7 +116,6 @@ const HeaderWrapper = styled.div`
   color: ${props => props.theme.main.text};
   margin-bottom: 80px;
   padding-bottom: 50px;
-  border-bottom: 1px solid #626262;
 `;
 
 const PostTitle = styled.h1`

@@ -42,22 +42,18 @@ const PostList = ({ posts }) => {
                       <PostTags>
                         {tags.map((tag) => (
                           <PostTag key={kebabCase(tag)}>
-                            #{tag}
+                            #{tag} {" "}
                           </PostTag>
                         ))}
                       </PostTags>
                     )}
-                    <ImageMobileWrapper>
-                      <Image previewImage={previewImage} />
-                    </ImageMobileWrapper>
-                    <Date>{date}</Date>
+
+                    
                     <PostDescription>
                       {description || truncate(body, 80)}
                     </PostDescription>  
+                    <Date>{date}</Date>
                   </PostContent>
-                  <ImageWrapper>
-                    <Image previewImage={previewImage} />
-                  </ImageWrapper>
                 </PostCard>
               </PostLink>
             );
@@ -117,7 +113,7 @@ const PostContent = styled.div`
 `;
 
 const Date = styled.div`
-  margin-top: 30px;
+  margin-top: 1rem;
   font-size: 14px;
   color: ${props => props.theme.postlist.date};
   opacity: 0.8;
@@ -126,11 +122,11 @@ const Date = styled.div`
 
 const PostTitle = styled.h1`
   color: ${props => props.theme.main.text};
-  font-size: 1.9rem;
+  font-size: 0.5rem;
   margin-top: 30px;
   margin-bottom: 15px;
   word-break: break-all;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 110%;
   transition: color 1s ease; 
 `;
@@ -145,13 +141,12 @@ const PostTag = styled.span`
   opacity: 0.8;
   font-size: 15px;
   margin-right: 13px;
-  margin-bottom: 8px;
   transition: color 1s ease; 
 `;
 
 const PostDescription = styled.p`
-  margin-top: 10px;
-  margin-bottom: 70px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-size: 15.5px;
   line-height: 170%;
   color: ${props => props.theme.postlist.text};
@@ -163,50 +158,5 @@ const EmptySpace = styled.div`
   height: 80vh;
 `;
 
-const basicUrl =
-  typeof window !== "undefined" && window.location.host === "localhost:8000"
-    ? "http://localhost:8000"
-    : siteMetadata.siteUrl;
-
-const ImageWrapper = styled.div`
-  width: 150px;
-  height: 150px;
-  margin-left: 30px;
-  overflow: hidden;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  transition: background 1s ease; 
-
-  @media(max-width: 768px) {
-    display: none;
-  }
-`;
-
-const ImageMobileWrapper = styled.div`
-  padding-top: 60px;
-  padding-bottom: 60px;
-  width: 160px;
-  height: 160px;
-  margin-left: 30px;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  transition: background 1s ease; 
-  display: flex;
-  margin: 0 auto; 
-
-  @media(min-width: 768px) {
-    display: none;
-  }
-`;
-  
-const Image = styled.div`
-  background-image: url(${props => (props.previewImage ? `${basicUrl}/${props.previewImage}` : `${basicUrl}/default.png`)});
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  transition: background 1s ease;
-`;
 
 export default PostList;

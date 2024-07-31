@@ -102,20 +102,4 @@ const Title = styled.div`
   font-weight: 800;
 `;
 
-const profileImageUrl =
-  typeof window !== "undefined" && window.location.host === "localhost:8000"
-    ? "http://localhost:8000"
-    : siteMetadata.siteUrl;
-
-const SocialImage = styled.div`
-  background-image: url(${profileImageUrl}/profile.png);
-  width: 38px;
-  height: 38px;
-  border: 1px solid transparent;
-  border-color: white;
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-`;
-
 export default AsideMenuBar;

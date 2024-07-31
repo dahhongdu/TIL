@@ -30,7 +30,7 @@ const PageFooterWrapper = styled.footer`
   color: gray;
   height: 30px;
   position: relative;
-  transform: translateY(-100%);
+  /* transform: translateY(-100%); */
 `;
 
 export default PageFooter;
