@@ -9,31 +9,27 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `dahhong.blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `다홍`,
+      summary: `공부한 것들을 조금씩 정리합니다.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `개발 공부중입니다!`,
+    siteUrl: `https://www.iluvwondu.com/`,
     social: {
-      twitter: `kylemathews`,
+      github: `dahhongdu`,
+      email: `dahhongdu`,
     },
   },
   plugins: [
     `gatsby-plugin-image`,
+    "gatsby-plugin-postcss",
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
       },
     },
     {
