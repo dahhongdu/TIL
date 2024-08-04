@@ -6,7 +6,12 @@ module.exports = {
     "./src/templates/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'tag': '#fff9eb',
+        'tag-hover': '#eadec2'
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import kebabCase from "lodash.kebabcase"
 
 import Bio from "../components/bio/bio"
 import Layout from "../components/layout/Layout"
@@ -23,13 +24,14 @@ const BlogPostTemplate = ({
             {post.frontmatter.date}
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
-            {tags.map((item, index) => (
-              <button
+            {tags.map((tag, index) => (
+              <Link
                 key={index}
-                className="inline-flex items-center rounded-full bg-slate-300 px-3 py-1 text-black text-sm font-semibold border-0"
+                className="inline-flex items-center rounded-full bg-slate-300 px-3 py-1 text-black text-sm font-semibold border-0 hover:bg-slate-400"
+                to={`/tags/${kebabCase(tag)}`}
               >
-                {item}
-              </button>
+                {tag}
+              </Link>
             ))}
           </div>
         </header>
@@ -46,40 +48,36 @@ const BlogPostTemplate = ({
 
       <nav className="w-full py-6">
         <ul className="flex justify-between list-none p-0 m-0 space-x-4">
-        <li className="w-full">
-      {previous ? (
-        <Link
-          to={previous.fields.slug}
-          rel="prev"
-          className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300"
-        >
-          ← {previous.frontmatter.title}
-        </Link>
-      ) : (
-        <div
-          className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md"
-        >
-          No previous post
-        </div>
-      )}
-    </li>
-    <li className="w-full">
-      {next ? (
-        <Link
-          to={next.fields.slug}
-          rel="next"
-          className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300"
-        >
-          {next.frontmatter.title} →
-        </Link>
-      ) : (
-        <div
-          className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md"
-        >
-          No next post
-        </div>
-      )}
-    </li>
+          <li className="w-full">
+            {previous ? (
+              <Link
+                to={previous.fields.slug}
+                rel="prev"
+                className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300"
+              >
+                ← {previous.frontmatter.title}
+              </Link>
+            ) : (
+              <div className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md">
+                No previous post
+              </div>
+            )}
+          </li>
+          <li className="w-full">
+            {next ? (
+              <Link
+                to={next.fields.slug}
+                rel="next"
+                className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300"
+              >
+                {next.frontmatter.title} →
+              </Link>
+            ) : (
+              <div className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md">
+                No next post
+              </div>
+            )}
+          </li>
         </ul>
       </nav>
     </Layout>

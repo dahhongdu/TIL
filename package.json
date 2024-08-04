@@ -14,6 +14,7 @@
     "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^5.13.7",
     "gatsby-plugin-feed": "^5.13.1",
+    "gatsby-plugin-fusejs": "^2.0.2",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
     "gatsby-plugin-mdx": "^5.13.1",
@@ -25,10 +26,13 @@
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "gatsby-use-fusejs": "^0.1.0",
+    "lodash.kebabcase": "^4.1.1",
     "prismjs": "^1.29.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^5.2.1",
+    "react-use-fusejs": "^2.0.2",
     "styled-components": "^6.1.12"
   },
   "devDependencies": {

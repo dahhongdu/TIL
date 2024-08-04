@@ -8,7 +8,7 @@ const PostCard = ({ post }) => {
   return (
     <Link
       to={url}
-      className="block bg-white border border-gray-300 rounded-lg  p-4 my-5 hover:bg-gray-100 transition duration-300"
+      className="block bg-gray-50 rounded-lg  p-4 my-5 hover:bg-gray-200 transition duration-300"
     >
       <div className="text-2xl font-bold text-gray-800">{title}</div>
       <div className="text-gray-600 mb-2">{date}</div>

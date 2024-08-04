@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio/bio"
 import Seo from "../components/seo"
 import Layout from "../components/layout/Layout"
-import PostCard from "../components/post-list/PostCard"
+import PostList from '../components/post-list/PostList'
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -26,11 +26,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-      <ol class="w-full" style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          return <PostCard post={post} />
-        })}
-      </ol>
+      <PostList posts={posts}/>
     </Layout>
   )
 }

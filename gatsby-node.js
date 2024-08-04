@@ -10,6 +10,9 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
+// Tags 를 위한 kebabCase
+const kebabCase = require(`lodash.kebabcase`)
+
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
@@ -24,6 +27,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id
           fields {
             slug
+          }
+          frontmatter {
+            tags
           }
         }
       }
@@ -44,6 +50,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
+  let tags = new Set()
   if (posts.length > 0) {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
@@ -58,8 +65,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nextPostId,
         },
       })
+
+      if (post.frontmatter.tags) {
+        post.frontmatter.tags.forEach(tag => {
+          tags.add(tag)
+        })
+      }
     })
   }
+
+  const tagTemplate = path.resolve("./src/templates/tags.jsx")
+  tags.forEach(tag => {
+    createPage({
+      path: `/tags/${kebabCase(tag)}/`,
+      component: tagTemplate,
+      context: {
+        tag,
+      },
+    })
+  })
 }
 
 /**
