@@ -14,7 +14,6 @@ const PostCard = ({ post }) => {
       <div className="text-gray-600 mb-2">{date}</div>
       <div className="text-gray-700">{description}</div>
       <div className="flex flex-wrap gap-2 mt-2">
-        <span className="text-gray-500">🏷️</span>
         {tags.map((tag, index) => (
           <span
             key={index}
