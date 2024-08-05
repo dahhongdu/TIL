@@ -5,6 +5,7 @@ import kebabCase from "lodash.kebabcase"
 import Bio from "../components/bio/bio"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/seo"
+import Giscus from '../giscus/index'
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
@@ -80,6 +81,7 @@ const BlogPostTemplate = ({
           </li>
         </ul>
       </nav>
+      <Giscus />
     </Layout>
   )
 }
