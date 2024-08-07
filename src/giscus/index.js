@@ -5,8 +5,14 @@ const Giscus = () => {
   const [mounted, setMounted] = useState(false)
   const ref = useRef(null)
 
-  const { theme } = useContext(ThemeContext)
-  const scriptElement = document.createElement("script")
+  const [commentTheme, setCommentTheme] = useState(null)
+
+  useEffect(() => {
+    setCommentTheme(window.__theme === window.__DARK ? "dark" : "light")
+    window.__onThemeChange = theme => {
+      setCommentTheme(theme === window.__DARK ? "dark" : "light")
+    }
+  }, [])
 
   useEffect(() => {
     if (!mounted) {
@@ -15,6 +21,7 @@ const Giscus = () => {
   }, [mounted])
 
   useEffect(() => {
+    const scriptElement = document.createElement("script")
     scriptElement.setAttribute("src", "https://giscus.app/client.js")
     scriptElement.setAttribute("data-repo", "dahhongdu/TIL")
     scriptElement.setAttribute("data-repo-id", "R_kgDOMdZqmw")
@@ -25,7 +32,7 @@ const Giscus = () => {
     scriptElement.setAttribute("data-reactions-enabled", "1")
     scriptElement.setAttribute("data-emit-metadata", "0")
     scriptElement.setAttribute("data-input-position", "top")
-    scriptElement.setAttribute("data-theme", theme)
+    scriptElement.setAttribute("data-theme", commentTheme)
     scriptElement.setAttribute("data-lang", "en")
     scriptElement.setAttribute("crossorigin", "anonymous")
     scriptElement.async = true
@@ -33,7 +40,7 @@ const Giscus = () => {
     if (ref.current) {
       ref.current.appendChild(scriptElement)
     }
-  }, [mounted, theme])
+  }, [mounted])
 
   if (!mounted) return null
 

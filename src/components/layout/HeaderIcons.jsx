@@ -1,11 +1,9 @@
 import { Link } from "gatsby"
-import React, { useContext } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import styled from "styled-components"
-import { LOCALSTORAGE_THEME_KEY } from "../constants/constants"
 
 import { FaTags } from "react-icons/fa"
 import { MdSearch, MdDarkMode, MdLightMode } from "react-icons/md"
-import { ThemeContext } from "../../context/themeContext"
 
 const iconSize = "1.5rem"
 
@@ -31,25 +29,44 @@ const IconWrapper = styled.div`
 `
 
 const HeaderIcons = () => {
-  const { theme, setTheme } = useContext(ThemeContext)
+  // const { theme, setTheme } = useContext(ThemeContext)
 
-  const toggleDarkMode = () => {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem(LOCALSTORAGE_THEME_KEY, "light")
-      setTheme("light")
-    } else {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem(LOCALSTORAGE_THEME_KEY, "dark")
-      setTheme("dark")
-    }
+  // const toggleDarkMode = () => {
+  //   if (document.documentElement.classList.contains("dark")) {
+  //     document.documentElement.classList.remove("dark")
+  //     localStorage.setItem(LOCALSTORAGE_THEME_KEY, "light")
+  //     setTheme("light")
+  //   } else {
+  //     document.documentElement.classList.add("dark")
+  //     localStorage.setItem(LOCALSTORAGE_THEME_KEY, "dark")
+  //     setTheme("dark")
+  //   }
+  // }
+
+  const [theme, setTheme] = useState(null)
+
+  let isDarkMode = false
+  if (typeof window !== "undefined") isDarkMode = theme === window.__DARK
+
+  const onClickDarkModeButton = useCallback(() => {
+    const newTheme = isDarkMode ? window.__LIGHT : window.__DARK
+    window.__setTheme(newTheme)
+    setTheme(newTheme)
+  }, [isDarkMode])
+
+  useEffect(() => {
+    setTheme(window.__theme)
+  }, [])
+
+  if (!theme) {
+    return null
   }
 
   return (
     <div class="flex gap-1.5">
       <IconWrapper>
-        <button onClick={toggleDarkMode}>
-          {theme === "dark" ? (
+        <button onClick={onClickDarkModeButton}>
+          {isDarkMode ? (
             <MdLightMode size={iconSize} />
           ) : (
             <MdDarkMode size={iconSize} />
