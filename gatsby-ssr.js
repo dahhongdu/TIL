@@ -7,7 +7,18 @@
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-exports.onRenderBody = ({ setHtmlAttributes, setBodyAttributes }) => {
+const React = require('react');
+
+exports.onRenderBody = ({ setPreBodyComponents, setHtmlAttributes }) => {
+  const script = `
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark")
+  }
+  `
   setHtmlAttributes({ lang: `en` })
-  setBodyAttributes({ className: "data-mode" })
+  setPreBodyComponents(<script dangerouslySetInnerHTML={{ __html: script }} />)
 }
