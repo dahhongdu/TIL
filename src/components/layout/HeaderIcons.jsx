@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import { FaTags } from "react-icons/fa"
 import { MdSearch, MdDarkMode, MdLightMode } from "react-icons/md"
+import { LuCat } from "react-icons/lu"
 
 const iconSize = "1.5rem"
 
@@ -11,10 +12,17 @@ const icons = [
   {
     url: "/tags",
     icon: <FaTags size={iconSize} />,
+    tooltip: "tags"
   },
   {
     url: "/search",
     icon: <MdSearch size={iconSize} />,
+    tooltip: "search"
+  },
+  {
+    url: "/guestbook",
+    icon: <LuCat size={iconSize} />,
+    tooltip: "✨방명록"
   },
 ]
 
@@ -29,20 +37,6 @@ const IconWrapper = styled.div`
 `
 
 const HeaderIcons = () => {
-  // const { theme, setTheme } = useContext(ThemeContext)
-
-  // const toggleDarkMode = () => {
-  //   if (document.documentElement.classList.contains("dark")) {
-  //     document.documentElement.classList.remove("dark")
-  //     localStorage.setItem(LOCALSTORAGE_THEME_KEY, "light")
-  //     setTheme("light")
-  //   } else {
-  //     document.documentElement.classList.add("dark")
-  //     localStorage.setItem(LOCALSTORAGE_THEME_KEY, "dark")
-  //     setTheme("dark")
-  //   }
-  // }
-
   const [theme, setTheme] = useState(null)
 
   let isDarkMode = false
@@ -75,8 +69,11 @@ const HeaderIcons = () => {
       </IconWrapper>
       {icons.map(item => {
         return (
-          <Link to={item.url}>
+          <Link to={item.url} class="relative group">
             <IconWrapper>{item.icon}</IconWrapper>
+            <div class="absolute  transform -translate-x-1/2 mt-1 -ml-1 hidden group-hover:block w-max px-3 py-2 bg-gray-800 text-white text-xs rounded-md shadow-md dark:bg-gray-700">
+              {item.tooltip}
+            </div>
           </Link>
         )
       })}

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 
 const Giscus = () => {
-  // const [mounted, setMounted] = useState(false)
   const ref = useRef(null)
 
   const [commentTheme, setCommentTheme] = useState(null)
@@ -12,12 +11,6 @@ const Giscus = () => {
       setCommentTheme(theme === window.__DARK ? "dark" : "light")
     }
   }, [])
-
-  // useEffect(() => {
-  //   if (!mounted) {
-  //     setMounted(true)
-  //   }
-  // }, [mounted])
 
   useEffect(() => {
     const scriptElement = document.createElement("script")
@@ -41,7 +34,6 @@ const Giscus = () => {
     }
   })
 
-  // if (!mounted) return null
 
   if (!commentTheme) return null
 
