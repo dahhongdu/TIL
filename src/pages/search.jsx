@@ -35,10 +35,10 @@ const Search = ({ data }) => {
         title="search"
         keywords={["blog", "gatsby", "frontend", "backend"]}
       />
-      <div className="flex items-center bg-gray-200 p-2 gap-2 rounded-md">
+      <div className="flex items-center bg-gray-200 p-2 gap-2 rounded-md dark:bg-neutral-700">
         <LuDog size="2rem" />
         <input
-          className="focus:outline-none bg-transparent placeholder-gray-500 text-xl w-full"
+          className="focus:outline-none bg-transparent placeholder-gray-500 text-xl w-full dark:placeholder-neutral-300"
           placeholder="search..."
           value={search}
           onChange={handleSearch}

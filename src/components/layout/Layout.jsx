@@ -5,9 +5,6 @@ import Header from "./Header"
 import Footer from "./Footer"
 
 const Layout = ({ title, children }) => {
-
-  
-
   return (
     <div className="lex flex-col min-h-screen">
       <Header title={title} />

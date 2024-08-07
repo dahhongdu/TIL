@@ -21,14 +21,14 @@ const BlogPostTemplate = ({
           <h1 className="text-3xl md:text-4xl font-bold">
             {post.frontmatter.title}
           </h1>
-          <div className="my-3 text-sm text-gray-600">
+          <div className="my-3 text-sm text-gray-600 dark:text-neutral-300">
             {post.frontmatter.date}
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
             {tags.map((tag, index) => (
               <Link
                 key={index}
-                className="inline-flex items-center rounded-full bg-slate-300 px-3 py-1 text-black text-sm font-semibold border-0 hover:bg-slate-400"
+                className="inline-flex items-center rounded-full bg-slate-300 px-3 py-1 text-black text-sm font-semibold border-0 hover:bg-slate-400 dark:bg-neutral-700 dark:text-neutral-300"
                 to={`/tags/${kebabCase(tag)}`}
               >
                 {tag}
@@ -39,9 +39,8 @@ const BlogPostTemplate = ({
 
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
-          className="prose"
+          className="prose dark:prose-invert dark:text-neutral-300"
         />
-
         <footer className="mt-10">
           <Bio />
         </footer>
@@ -54,12 +53,13 @@ const BlogPostTemplate = ({
               <Link
                 to={previous.fields.slug}
                 rel="prev"
-                className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300"
+                className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-neutral-700 hover:text-white transition duration-300 dark:bg-neutral-800 dark:text-neutral-300"
               >
                 ← {previous.frontmatter.title}
               </Link>
             ) : (
-              <div className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md">
+              <div className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md 
+              dark:bg-neutral-800 dark:text-neutral-500">
                 No previous post
               </div>
             )}
@@ -69,12 +69,12 @@ const BlogPostTemplate = ({
               <Link
                 to={next.fields.slug}
                 rel="next"
-                className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300"
+                className="block w-full text-center py-3 px-6 bg-gray-300 text-black rounded-lg shadow-md hover:bg-neutral-700 hover:text-white transition duration-300 dark:bg-neutral-800 dark:text-neutral-300"
               >
                 {next.frontmatter.title} →
               </Link>
             ) : (
-              <div className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md">
+              <div className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md dark:bg-neutral-800 dark:text-neutral-500">
                 No next post
               </div>
             )}

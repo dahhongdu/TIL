@@ -1,9 +1,11 @@
 import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
+import { LOCALSTORAGE_THEME_KEY } from "../constants/constants"
 
 import { FaTags } from "react-icons/fa"
 import { MdSearch, MdDarkMode, MdLightMode } from "react-icons/md"
+import { ThemeContext } from "../../context/themeContext"
 
 const iconSize = "1.5rem"
 
@@ -19,7 +21,7 @@ const icons = [
 ]
 
 const IconWrapper = styled.div`
-  opacity: 0.6;
+  opacity: 0.7;
   transition: opacity 0.3s ease;
   cursor: pointer;
 
@@ -29,26 +31,29 @@ const IconWrapper = styled.div`
 `
 
 const HeaderIcons = () => {
-  const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    const savedMode = localStorage.getItem("darkMode")
-    if (savedMode === "true") {
-      setDarkMode(true)
-    }
-  }, [])
+  const { theme, setTheme } = useContext(ThemeContext)
 
   const toggleDarkMode = () => {
-    const newMode = !darkMode
-    setDarkMode(newMode)
-    localStorage.setItem("darkMode", newMode.toString())
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark")
+      localStorage.setItem(LOCALSTORAGE_THEME_KEY, "light")
+      setTheme("light")
+    } else {
+      document.documentElement.classList.add("dark")
+      localStorage.setItem(LOCALSTORAGE_THEME_KEY, "dark")
+      setTheme("dark")
+    }
   }
 
   return (
     <div class="flex gap-1.5">
       <IconWrapper>
         <button onClick={toggleDarkMode}>
-          {darkMode ? <MdLightMode size={iconSize}/> : <MdDarkMode size={iconSize}/>}
+          {theme === "dark" ? (
+            <MdLightMode size={iconSize} />
+          ) : (
+            <MdDarkMode size={iconSize} />
+          )}
         </button>
       </IconWrapper>
       {icons.map(item => {

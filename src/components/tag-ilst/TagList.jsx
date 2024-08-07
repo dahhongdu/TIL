@@ -12,7 +12,7 @@ const TagList = ({ group }) => {
         {group.map(tag => (
           <li key={tag.fieldValue}>
             <Link
-              className="inline-block font-semibold py-2 px-4 bg-tag rounded-lg shadow-sm hover:bg-tag-hover transition duration-300"
+              className="inline-block font-semibold py-2 px-4 bg-tag rounded-lg shadow-sm hover:bg-tag-hover transition duration-300 dark:bg-slate-700 dark:hover:bg-slate-500"
               to={`/tags/${kebabCase(tag.fieldValue)}/`}
             >
               <span className="text-md">{tag.fieldValue}</span> (
