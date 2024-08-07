@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
-import { ThemeContext } from "../context/themeContext"
+import React, { useEffect, useRef, useState } from "react"
 
 const Giscus = () => {
-  const [mounted, setMounted] = useState(false)
+  // const [mounted, setMounted] = useState(false)
   const ref = useRef(null)
 
   const [commentTheme, setCommentTheme] = useState(null)
@@ -14,11 +13,11 @@ const Giscus = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (!mounted) {
-      setMounted(true)
-    }
-  }, [mounted])
+  // useEffect(() => {
+  //   if (!mounted) {
+  //     setMounted(true)
+  //   }
+  // }, [mounted])
 
   useEffect(() => {
     const scriptElement = document.createElement("script")
@@ -40,9 +39,11 @@ const Giscus = () => {
     if (ref.current) {
       ref.current.appendChild(scriptElement)
     }
-  }, [mounted])
+  })
 
-  if (!mounted) return null
+  // if (!mounted) return null
+
+  if (!commentTheme) return null
 
   return <div ref={ref} />
 }
