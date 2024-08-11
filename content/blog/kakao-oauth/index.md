@@ -1,5 +1,5 @@
 ---
-title: 👮 Kakao OAuth를 사용해  회원가입 구현하기 (리액트)
+title: 👮 React와 Kakao OAuth를 사용해 회원가입 구현하기
 date: "2024-08-01T22:40:32.169Z"
 description: 우리 Kakao OAuth로 소셜 로그인 구현해보자! (라던 과거의 나..)
 tags: 
