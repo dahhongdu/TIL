@@ -5,7 +5,7 @@ import kebabCase from "lodash.kebabcase"
 import Bio from "../components/bio/bio"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/seo"
-import Giscus from '../giscus/index'
+import Giscus from "../giscus/index"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
@@ -36,7 +36,12 @@ const BlogPostTemplate = ({
             ))}
           </div>
         </header>
-
+        <section
+          dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+          className="prose dark:prose-invert dark:text-neutral-300 group text-m top-4 mb-10 hide-on-mobile"
+        ></section>
+        <hr />
+        <br />
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="prose dark:prose-invert dark:text-neutral-300"
@@ -58,8 +63,10 @@ const BlogPostTemplate = ({
                 ← {previous.frontmatter.title}
               </Link>
             ) : (
-              <div className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md 
-              dark:bg-neutral-800 dark:text-neutral-500">
+              <div
+                className="block w-full text-center py-3 px-6 bg-gray-200 text-gray-500 rounded-lg shadow-md 
+              dark:bg-neutral-800 dark:text-neutral-500"
+              >
                 No previous post
               </div>
             )}
@@ -112,6 +119,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
