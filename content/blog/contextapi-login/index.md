@@ -1,5 +1,5 @@
 ---
-title: 🌏 리액트+타입스크립트+Context API로 로그인 여부 상태 관리하기
+title: 🌏 Context API와 Access Token으로 로그인 여부 상태 관리하기
 date: "2024-08-20T22:40:32.169Z"
 description: 그냥 전역으로 휘뚜루마뚜루 관리하면 되는거아냐?! 했다가 꽤나 삽질했습니다만 이런 제가 바보같은가요
 tags: 
